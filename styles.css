@@ -12,6 +12,8 @@
     --light-bg: #ecf0f1;
     --white: #ffffff;
     --spacing: 1rem;
+    --card-bg: #f8f9fa;
+    --border-color: #e0e0e0;
 }
 
 body {
@@ -186,22 +188,120 @@ h2 {
     font-weight: 600;
 }
 
-/* Projects Section */
-.project {
-    background-color: var(--light-bg);
-    padding: 1.5rem;
+/* Projects Section - Scorecard Format */
+.project-card {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-left: 5px solid var(--secondary-color);
     border-radius: 8px;
-    margin-bottom: 1.5rem;
-    border-left: 4px solid var(--secondary-color);
+    padding: 1.75rem;
+    margin-bottom: 1.75rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.project h3 {
-    color: var(--secondary-color);
+.project-card:hover {
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+    transform: translateY(-2px);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 0.75rem;
+    gap: 1rem;
 }
 
-.project p {
+.project-card h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin: 0;
+    flex: 1;
+}
+
+.project-card .date {
+    white-space: nowrap;
+    font-size: 0.85rem;
+}
+
+.project-card .company {
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    margin-top: -0.5rem;
+}
+
+.project-section {
+    margin-bottom: 1.25rem;
+}
+
+.project-section h4 {
+    color: var(--secondary-color);
+    font-size: 1rem;
     margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.project-section p {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.project-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.project-list li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-color);
+}
+
+.project-list li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.result-item {
+    padding: 0.75rem;
+    background-color: rgba(52, 152, 219, 0.1);
+    border-left: 3px solid var(--secondary-color);
+    padding-left: 1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    border-radius: 4px;
+}
+
+/* Tools/Tech Badges */
+.tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tool-badge {
+    background-color: var(--light-bg);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    font-weight: 500;
 }
 
 /* Footer */
@@ -229,7 +329,8 @@ h2 {
     }
 
     .job-header,
-    .education-header {
+    .education-header,
+    .project-header {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -240,5 +341,22 @@ h2 {
 
     .skills-grid {
         grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        padding: 1.25rem;
+    }
+
+    .project-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .tools {
+        gap: 0.5rem;
+    }
+
+    .tool-badge {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
     }
 }
