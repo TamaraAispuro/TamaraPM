@@ -188,15 +188,15 @@ h2 {
     font-weight: 600;
 }
 
-/* Projects Section - Scorecard Format */
+/* Projects Section - Collapsible Scorecard Format */
 .project-card {
     background-color: var(--card-bg);
     border: 2px solid var(--border-color);
     border-left: 5px solid var(--secondary-color);
     border-radius: 8px;
-    padding: 1.75rem;
     margin-bottom: 1.75rem;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
 }
 
 .project-card:hover {
@@ -207,8 +207,22 @@ h2 {
 .project-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 0.75rem;
+    align-items: center;
+    padding: 1.75rem;
+    cursor: pointer;
+    user-select: none;
+    gap: 1rem;
+}
+
+.project-header:hover {
+    background-color: rgba(52, 152, 219, 0.05);
+}
+
+.project-title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
     gap: 1rem;
 }
 
@@ -216,7 +230,6 @@ h2 {
     color: var(--primary-color);
     font-size: 1.3rem;
     margin: 0;
-    flex: 1;
 }
 
 .project-card .date {
@@ -224,15 +237,43 @@ h2 {
     font-size: 0.85rem;
 }
 
-.project-card .company {
+.toggle-icon {
+    font-size: 1.5rem;
     color: var(--secondary-color);
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-    margin-top: -0.5rem;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.project-card.expanded .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.project-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    border-top: 1px solid var(--border-color);
+}
+
+.project-card.expanded .project-details {
+    max-height: 2000px;
+}
+
+.project-details-content {
+    padding: 0 1.75rem 1.75rem 1.75rem;
+}
+
+.project-details-content .company {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
 }
 
 .project-section {
     margin-bottom: 1.25rem;
+}
+
+.project-section:last-child {
+    margin-bottom: 0;
 }
 
 .project-section h4 {
@@ -343,12 +384,16 @@ h2 {
         grid-template-columns: 1fr;
     }
 
-    .project-card {
+    .project-header {
         padding: 1.25rem;
     }
 
     .project-card h3 {
         font-size: 1.1rem;
+    }
+
+    .project-details-content {
+        padding: 0 1.25rem 1.25rem 1.25rem;
     }
 
     .tools {
@@ -358,5 +403,15 @@ h2 {
     .tool-badge {
         padding: 0.4rem 0.8rem;
         font-size: 0.85rem;
+    }
+
+    .project-title-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .project-card .date {
+        font-size: 0.75rem;
     }
 }
